@@ -7,8 +7,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import {codemirror} from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
-import VueParticles from 'vue-particles'
-import md5 from 'js-md5';
+
+import md5 from 'js-md5'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import 'default-passive-events'
@@ -18,7 +18,7 @@ Vue.use(VueClipboard)
 Vue.config.productionTip = false
 Vue.use(ViewUI);
 Vue.prototype.$md5 = md5
-Vue.use(VueParticles)
+
 Vue.use(codemirror)
 Vue.use(ElementUI);
 
@@ -26,31 +26,26 @@ Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 axios.defaults.baseURL = "http://121.4.57.217:9620";
 
 
-
-
-
-
-
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
 router.beforeEach((to, from, next) => {
 
-      if (to.meta.requireAuth) {
-          // console.log(store.state.user.token)
-        if (store.state.user.token) {
-          next()
+        if (to.meta.requireAuth) {
+            // console.log(store.state.user.token)
+            if (store.state.user.token) {   //如果存在token则直接跳转
+                next()
+            } else {
+                next({            //否则跳回登录界面
+                    path: '/',
+                    query: {redirect: to.fullPath}
+                })
+            }
         } else {
-          next({
-            path: '/',
-            query: {redirect: to.fullPath}
-          })
+            next()
         }
-      } else {
-        next()
-      }
     }
 )
 // eslint-disable-next-line no-unused-vars
-let isRefreshing=false;
+let isRefreshing = false;
 // 存储请求的数组
 let refreshSubscribers = [];
 
@@ -62,46 +57,39 @@ function subscribeTokenRefresh(cb) {
 // 数组中的请求得到新的token之后执行，用新的token去请求数据
 // eslint-disable-next-line no-unused-vars
 function onRrefreshed(token) {
-     // console.log("处理阻塞的请求")
     refreshSubscribers.map(cb => cb(token));
 }
 
 // eslint-disable-next-line no-unused-vars
-function isExpired(){
-    let time=localStorage.getItem("TokenTime");
+function isExpired() {
+    let time = sessionStorage.getItem("TokenTime");
     let nowTime = new Date().getTime();
     let stamp = nowTime - time;
     let minutes = parseInt((stamp % (1000 * 60 * 60)) / (1000 * 60));
-    return minutes >= 4? true : false;
+    return minutes >= 4 ? true : false;
 }
-
-
 
 
 axios.interceptors.request.use(
     config => {
         // 判断是否存在token，如果存在的话，则每个http header都加上token
-         let token = localStorage.getItem('token')
-        if (config.url.indexOf('/api/token/refresh/') >= 0 ) {
+        let token = sessionStorage.getItem('token')
+        if (config.url.indexOf('/api/token/refresh/') >= 0) {
             return config
         }
-        if (!Object.prototype.hasOwnProperty.call(config.headers, "Authorization")&& token) {
-            if(!isExpired()){
-                config.headers.Authorization = "JWT "+token;
-                 // console.log(config.headers.Authorization);
-            }else{
-                // console.log("emmmmm" +isRefreshing)
-                if(!isRefreshing){
-                    // console.log('刷新token ing')
-                    isRefreshing=true;
-                    // console.log("refresh token"+config.url);
+        if (!Object.prototype.hasOwnProperty.call(config.headers, "Authorization") && token) {
+            if (!isExpired()) {
+                config.headers.Authorization = "JWT " + token;
+            } else {
+                if (!isRefreshing) {
+                    isRefreshing = true;
                     axios.post("http://121.4.57.217:9620/api/token/refresh/",
-                        {"refresh":localStorage.getItem("refreshToken")})
+                        {"refresh": sessionStorage.getItem("refreshToken")})
                         .then(Response => {
-                            isRefreshing=false;
+                            isRefreshing = false;
                             store.commit('SET_TOKEN', Response.data.access)   //保存token用于拦截
-                            localStorage.setItem("token",Response.data.access)
-                            localStorage.setItem("TokenTime",new Date().getTime());//token刷新
+                            sessionStorage.setItem("token", Response.data.access)
+                            sessionStorage.setItem("TokenTime", new Date().getTime());//token刷新
 
                             onRrefreshed(Response.data.access);
                             /*执行onRefreshed函数后清空数组中保存的请求*/
@@ -117,7 +105,7 @@ axios.interceptors.request.use(
                 let retry = new Promise((resolve) => {
                     /*(token) => {...}这个函数就是回调函数*/
                     subscribeTokenRefresh((token) => {
-                        config.headers.Authorization ="JWT "+token;
+                        config.headers.Authorization = "JWT " + token;
                         resolve(config)
                     })
                 });
@@ -127,7 +115,7 @@ axios.interceptors.request.use(
         }
         return config;
     },
-    );
+);
 
 
 /* eslint-disable no-new */

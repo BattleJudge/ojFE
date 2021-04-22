@@ -93,10 +93,10 @@
               getData(){
                 this.$axios({
                   method: 'get',
-                  url: '/api/problem/?id='+localStorage.getItem("pro_Id"),
+                  url: '/api/problem/?id='+sessionStorage.getItem("pro_Id"),
 
                 }).then(response => {
-                  console.log(response.data);
+                  // console.log(response.data);
                   this.form = response.data.data;
                 })
                         .catch(error => {
@@ -109,7 +109,7 @@
               }
         },
       mounted(){
-          console.log("emmmm");
+          // console.log("emmmm");
           this.getData()
       }
     }

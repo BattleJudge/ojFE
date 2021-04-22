@@ -367,7 +367,7 @@
             // window.addEventListener('touchmove', func, { passive: false })
             // window.addEventListener('touchmove',  function (e) { console.log("hello");e.preventDefault(); }, { passive: false });
             console.log(this.$route.path);
-            this.ProblemID=localStorage.getItem("ProblemId");
+            this.ProblemID=sessionStorage.getItem("ProblemId");
             this.Send_Info.pro_id=this.ProblemID;
             this.getData();
 

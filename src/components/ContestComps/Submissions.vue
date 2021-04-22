@@ -80,7 +80,8 @@
                     method: 'get',
                     url: '/api/battle_submissions/',
                   params: {
-                    battle_id:localStorage.getItem("Id"),
+                     battle_id:sessionStorage.getItem("Id"),
+
                     size: limit,
                     page: offset
                   }

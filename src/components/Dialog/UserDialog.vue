@@ -130,7 +130,7 @@
                                 return
                             }
                             this.$message({
-                                message: "修改成功！",
+                                message: "修改成功",
                                 type: "success"
                             });
                         }

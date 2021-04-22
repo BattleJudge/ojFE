@@ -121,17 +121,16 @@
 
             handleEdit(index, row) {
                 console.log(index + "edit");
-                localStorage.setItem("ProblemInformation",JSON.stringify(row));
+                sessionStorage.setItem("ProblemInformation",JSON.stringify(row));
                 this.$router.push("/Admin/Problem/Update");
             },
 
             handleAdd() {
-
                 this.$router.push("/Admin/Problem/Add");
             },
             handleDetail(index, row) {
                 console.log(index + "detail");
-                localStorage.setItem("ProblemInformation",JSON.stringify(row));
+                sessionStorage.setItem("ProblemInformation",JSON.stringify(row));
                 this.$router.push("/Admin/Problem/Detail");
             },
             handleSizeChange(val) {

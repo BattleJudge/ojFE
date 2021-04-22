@@ -17,7 +17,6 @@
           </el-col>
         </el-row>
         </div>
-
         <div :style="{'height': (active==index? '': '10px')}">
           <markdown-it-vue class="md-body" :content="ele.content"/>
         </div>
@@ -101,12 +100,7 @@
             }else{
               this.active=-1;
             }
-
-            // console.log("click "+index);
           },
-
-
-
             // on-row-click有两个返回值：行内容和行号（从0开始）
 
           handleSizeChange(val) {
@@ -124,7 +118,7 @@
               method: 'get',
               url: '/api/solution_list/',
               params: {
-                pro_id:localStorage.getItem("ProblemId"),
+                pro_id:sessionStorage.getItem("ProblemId"),
                 size: limit,
                 page: offset
               }
@@ -137,7 +131,6 @@
               }
 
             }).catch(error => {
-
                       this.$message.error("服务器错误，获取数据失败");
                       console.log(
                               "服务器错误！" + "(" + JSON.stringify(error) + ")"

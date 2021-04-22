@@ -43,7 +43,7 @@
                         method: 'put',
                         url: '/api/solution/',
                         data: Qs.stringify({
-                            pro_id:localStorage.getItem("ProblemId"),
+                            pro_id:sessionStorage.getItem("ProblemId"),
                             content: this.content
                         })
                     }).then(response => {

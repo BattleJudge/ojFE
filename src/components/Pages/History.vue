@@ -66,16 +66,16 @@
         methods: {
             ratingcolor({row}) {          //根据结果显示不同的样式
 
-              if (row.result == localStorage.getItem("nickname"))
+              if (row.result == sessionStorage.getItem("nickname"))
                 return "background:#DFFFDF;font-weight: bold;";
-              else if (row.result != localStorage.getItem("nickname")&&row.result!="drawn game")
+              else if (row.result != sessionStorage.getItem("nickname")&&row.result!="drawn game")
                 return 'background:#FFD9EC;font-weight: bold;';
 
             },
             ProblemClick(row) {//转至详细界面，显示该题目个人提交详情
-                localStorage.setItem("Id", row.id);
-              localStorage.setItem("pro_Id", row.pro_id);
-                // localStorage.setItem("problemId", row.problemId)
+              sessionStorage.setItem("Id", row.id);
+              sessionStorage.setItem("pro_Id", row.pro_id);
+
                 this.$router.push({path: '/HistoryDetail'});
             },
 

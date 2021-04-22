@@ -37,7 +37,7 @@
                 }
             },
             query() {
-              localStorage.removeItem("token");
+              sessionStorage.removeItem("token");
               console.log(this.username)
 
                     this.$axios({

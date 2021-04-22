@@ -353,19 +353,15 @@
         },
         mounted() {
             console.log(this.$route.path);
-
             if (this.$route.path.endsWith("Add")) {                   //添加
                 this.update = false;
-
                 console.log(this.form);
             } else {
                 this.update = true;                            //修改
-                this.form = JSON.parse(localStorage.getItem("ProblemInformation"))
+                this.form = JSON.parse(sessionStorage.getItem("ProblemInformation"))
                 console.log(this.form);
             }
             this.editable = true;
-
-
         },
 
     }

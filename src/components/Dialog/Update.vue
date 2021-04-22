@@ -121,7 +121,6 @@
                 };
                 this.$axios(options).then((res) => {
                     this.avatar = res.data.data.avatar;
-
                     this.dialogRegisterVisible = false;
                     this.$router.go(0);          //刷新界面
 
@@ -167,9 +166,9 @@
                 this.dialogRegisterVisible = true;
                 this.event = "";
 
-                this.avatar = localStorage.getItem("avatar")
-                this.updateform.nickname = localStorage.getItem("nickname")
-                this.updateform.motto = localStorage.getItem("motto")
+                this.avatar = sessionStorage.getItem("avatar")
+                this.updateform.nickname = sessionStorage.getItem("nickname")
+                this.updateform.motto = sessionStorage.getItem("motto")
             },
             updateClick() {
                 if (

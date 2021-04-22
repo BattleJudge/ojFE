@@ -80,7 +80,7 @@
                 }
 
 
-                localStorage.removeItem('token')
+                sessionStorage.removeItem('token')
                 this.$axios({
                     method: 'post',
                     url: '/api/reset_pwd/',

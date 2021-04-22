@@ -183,14 +183,6 @@ export default new Router({
 
 
 
-        // {
-        //     path: '/Loading',
-        //     component: Loading,
-        //     meta: {
-        //         keepAlive: false,
-        //         requireAuth: true
-        //     }
-        // },
 
 
     ]

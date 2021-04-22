@@ -80,13 +80,12 @@
                 this.$message.error("用户名或邮箱太短！");
                 return;
               }
-
               if (this.loginForm.password.length < 6) {
                 this.$message.error("密码太短！");
                 return;
               }
 
-                 localStorage.removeItem('token')
+                 sessionStorage.removeItem('token')
                 this.$axios({
                     method: 'post',
                     // headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -105,18 +104,16 @@
                         //store保存token
                         this.$store.commit('SET_TOKEN', Response.data.data.access)   //保存token用于拦截
                         this.$store.commit('SET_USER', this.loginForm.username)
-
-                        localStorage.setItem("token", Response.data.data.access);
-                        localStorage.setItem("refreshToken", Response.data.data.refresh);
-                        localStorage.setItem("password", this.loginForm.password);
-                        // localStorage.setItem("username", Response.data.data.username);    //保存用户昵称
-                        localStorage.setItem("userId", Response.data.data.id);       //用户Id
-                        localStorage.setItem("avatar", Response.data.data.avatar);
-                        localStorage.setItem("TokenTime",new Date().getTime());     //记录Token创造时间
+                        sessionStorage.setItem("token", Response.data.data.access);
+                        sessionStorage.setItem("refreshToken", Response.data.data.refresh);
+                        sessionStorage.setItem("password", this.loginForm.password);
+                         sessionStorage.setItem("userId", Response.data.data.id);       //用户Id
+                        sessionStorage.setItem("avatar", Response.data.data.avatar);
+                        sessionStorage.setItem("TokenTime",new Date().getTime());     //记录Token创造时间
                         if(Response.data.data.user_type=="Regular User"){
-                          localStorage.setItem("role","user")
+                          sessionStorage.setItem("role","user")
                         }else{
-                          localStorage.setItem("role","Admin")
+                          sessionStorage.setItem("role","Admin")
                         }
                         PubSub.publish("Login")
                         this.$router.replace({path: '/Information'});

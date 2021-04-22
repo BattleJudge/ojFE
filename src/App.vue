@@ -33,13 +33,6 @@
                     <i class="el-icon-c-scale-to-original"></i>PK
                 </el-menu-item>
 
-<!--                <el-menu-item index="/Submit" v-if=Admin>-->
-<!--                    <i class="el-icon-upload"></i>提交-->
-<!--                </el-menu-item>-->
-
-<!--                <el-menu-item index="/ReJudge" v-if=Admin>-->
-<!--                    <i class="el-icon-refresh-right"></i>重判-->
-<!--                </el-menu-item>-->
 
                 <el-menu-item index="/User/List" v-if=Admin>
                     用户管理
@@ -96,13 +89,13 @@
         mounted() {
 
             PubSub.subscribe("Login", () => {
-                if (localStorage.getItem("role") == "user") {
+                if (sessionStorage.getItem("role") == "user") {
                     this.Admin = false;
                 } else {
                     this.Admin = true;
                 }
             })
-          if (localStorage.getItem("role") == "user") {
+          if (sessionStorage.getItem("role") == "user") {
             this.Admin = false;
           } else {
             this.Admin = true;

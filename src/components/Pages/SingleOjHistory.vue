@@ -99,7 +99,7 @@
                     method: 'get',
                     url: '/api/submission_list/',
                     params: {
-                        pro_id:localStorage.getItem("ProblemId"),
+                        pro_id:sessionStorage.getItem("ProblemId"),
                         size: limit,
                         page: offset
                     }

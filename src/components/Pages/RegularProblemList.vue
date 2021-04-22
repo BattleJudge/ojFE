@@ -105,7 +105,7 @@
                     });
             },
             handleOj(index, row) {
-                localStorage.setItem("ProblemId",row.id);
+                sessionStorage.setItem("ProblemId",row.id);
                 this.$router.push("/SingleOj");
             },
 

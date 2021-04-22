@@ -2,17 +2,12 @@
 <template>
     <div>
         <!--    退出的提示-->
-        <el-dialog
-                title="提示"
-                :visible.sync="dialogVisible"
-                width="30%"
-        >
+        <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
             <span>{{message}}</span>
             <span slot="footer" class="dialog-footer">
-
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
                 <el-button @click="showCode" v-if="message.indexOf('对方成功解答') >= 0">查看对方代码</el-button>
-  </span>
+            </span>
         </el-dialog>
 
         <el-dialog
@@ -97,14 +92,14 @@
             },
             heart_open() {
                 console.log("heart open")
-                this.$refs.Heart.initWebSocket();
-            },//开启心跳
+                this.$refs.Heart.initWebSocket();//调用子组件，开启心跳
+            },
 
             quit() {                                                 //退出返回到个人信息界面
                 // this.tag = 0;
                 this.dialogVisible = false;
                 this.$router.replace({path: '/Information'});
-                 // this.$router.go(0)
+                // this.$router.go(0)
                 if (this.tag == 0)
                     this.$refs.Heart.sendQuitMessage();
             },

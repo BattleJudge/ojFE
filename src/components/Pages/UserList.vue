@@ -87,7 +87,6 @@ import UserDialog from "../Dialog/UserDialog"
             handleEdit(index, row) {
                 console.log(index+"  "+row);
                 this.$refs.userDialog.openEdit(row);
-
             },
             handleDelete(index, row) {
                 console.log(index+"  "+row);
@@ -176,8 +175,7 @@ import UserDialog from "../Dialog/UserDialog"
 
                 })
                     .catch(error => {
-
-                        this.$message.error("服务器错误，获取数据失败");
+                        this.$message.error("权限不符合，请退出重登");
                         console.log(
                             "服务器错误！" + "(" + JSON.stringify(error) + ")"
                         );
@@ -186,7 +184,7 @@ import UserDialog from "../Dialog/UserDialog"
         },
         mounted(){
 
-                if(localStorage.getItem("role")=="user"){
+                if(sessionStorage.getItem("role")=="user"){
                     this.Admin=false;
                 }else{
                     this.Admin=true;

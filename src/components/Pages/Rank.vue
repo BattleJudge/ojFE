@@ -83,7 +83,6 @@
             }
         },
         created() {
-          // this.loading=false
           this.getData(this.pagesize, this.currentpage);
         }
     };

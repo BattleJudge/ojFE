@@ -101,7 +101,7 @@
                             type: "success"
                         });
                         this.dialogRegisterVisible = false;
-                        localStorage.setItem("password", this.updateform.new_password);
+                        sessionStorage.setItem("password", this.updateform.new_password);
                         this.$router.go(0);          //刷新界面
                     }
                 })

@@ -93,9 +93,9 @@
 
         },
       mounted(){
-          console.log("hello description")
-          console.log(JSON.parse(localStorage.getItem("ProblemInformation")))
-        this.form=JSON.parse(localStorage.getItem("ProblemInformation"));
+          // console.log("hello description")
+          // console.log(JSON.parse(sessionStorage.getItem("ProblemInformation")))
+         this.form=JSON.parse(sessionStorage.getItem("ProblemInformation"));
           console.log(this.form);
 
       }

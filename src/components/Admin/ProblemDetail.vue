@@ -5,7 +5,6 @@
                 <div class="description" style="text-align:left ;">
 
 
-
                     <div class="tag" v-if="!editable">
                         {{form.title}}
                     </div>
@@ -13,8 +12,8 @@
 
                     <div>
                         <div class="tag">题目描述：</div>
-                        <div class="retract" >
-                            <markdown-it-vue  class="md-body" :content="form.description"/>
+                        <div class="retract">
+                            <markdown-it-vue class="md-body" :content="form.description"/>
                         </div>
                     </div>
                     <br/>
@@ -22,7 +21,7 @@
 
                     <div>
                         <div class="tag">输入描述：</div>
-                        <div class="retract" >
+                        <div class="retract">
                             <markdown-it-vue class="md-body" :content="form.input_description"/>
                         </div>
                     </div>
@@ -31,7 +30,7 @@
 
                     <div>
                         <div class="tag">输出描述：</div>
-                        <div class="retract" >
+                        <div class="retract">
                             <markdown-it-vue class="md-body" :content="form.output_description"/>
                         </div>
                     </div>
@@ -40,13 +39,14 @@
                     <div>
                         <div class="tag">题目来源：</div>
 
-                        <div class="retract" >{{ form.problem_source }}</div>
+                        <div class="retract">{{ form.problem_source }}</div>
 
                     </div>
                     <br/>
                     <div>
                         <div class="tag">示例：</div>
-                        <el-form label-width="100px"  v-for="(item, index) in form.samples" :key="index" style="width: 100%">
+                        <el-form label-width="100px" v-for="(item, index) in form.samples" :key="index"
+                                 style="width: 100%">
 
                             <el-row :gutter="24" style="margin-left: -10px">
                                 <el-col :span="10">
@@ -67,7 +67,8 @@
                                     <el-button class="ml10" type="text" size="medium"
                                                v-clipboard:copy="item.input"
                                                v-clipboard:success="onCopy"
-                                               v-clipboard:error="onError">复制</el-button>
+                                               v-clipboard:error="onError">复制
+                                    </el-button>
                                 </el-col>
                                 <el-col :span="11">
                                     <el-form-item
@@ -87,7 +88,8 @@
                                     <el-button class="ml10" type="text" size="medium"
                                                v-clipboard:copy="item.output"
                                                v-clipboard:success="onCopy"
-                                               v-clipboard:error="onError">复制</el-button>
+                                               v-clipboard:error="onError">复制
+                                    </el-button>
                                 </el-col>
 
                             </el-row>
@@ -98,7 +100,7 @@
 
                     <div>
                         <div class="tag">难度：</div>
-                        <div class="retract" >{{ form.difficulty }}</div>
+                        <div class="retract">{{ form.difficulty }}</div>
 
                     </div>
                     <br/>
@@ -107,7 +109,7 @@
                     <div>
                         <div class="tag">是否显示在题库：</div>
 
-                        <el-radio-group class="retract"  v-model="form.visible" onclick="return false;">
+                        <el-radio-group class="retract" v-model="form.visible" onclick="return false;">
                             <el-radio :label="true">显示</el-radio>
                             <el-radio :label="false">不显示</el-radio>
 
@@ -118,7 +120,7 @@
 
                     <div>
                         <div class="tag">是否加入到pk系统：</div>
-                        <el-radio-group v-model="form.in_battle_set"  class="retract"
+                        <el-radio-group v-model="form.in_battle_set" class="retract"
                                         onclick="return false;">
                             <el-radio :label="true">加入</el-radio>
                             <el-radio :label="false">不加入</el-radio>
@@ -131,13 +133,13 @@
                     <div>
                         <div class="tag">内存限制(单位MB)：</div>
 
-                        <div class="retract" >{{ form.memory_limit }}</div>
+                        <div class="retract">{{ form.memory_limit }}</div>
                     </div>
                     <br/>
                     <div>
                         <div class="tag">时间限制（单位毫秒）：</div>
 
-                        <div class="retract" >{{ form.time_limit }}</div>
+                        <div class="retract">{{ form.time_limit }}</div>
                     </div>
                     <br/>
                     <div>
@@ -163,6 +165,7 @@
 <script>
     import MarkdownItVue from 'markdown-it-vue'
     import 'markdown-it-vue/dist/markdown-it-vue.css'
+
     export default {
         name: "ProblemDetail",
         components: {
@@ -198,11 +201,11 @@
         },
         methods: {
 
-            onCopy(){
+            onCopy() {
                 this.$message.success("复制成功")
             },
             // 复制失败
-            onError(){
+            onError() {
                 alert("复制失败");
             },
 
@@ -215,11 +218,11 @@
         mounted() {
             console.log(this.$route.path);
 
-                                                  //获取详情
-                this.editable = false;
-                this.form = JSON.parse(localStorage.getItem("ProblemInformation"))
+            //获取详情
+            this.editable = false;
+            this.form = JSON.parse(sessionStorage.getItem("ProblemInformation"))
 
-                console.log(this.editable);
+            console.log(this.editable);
 
 
         },

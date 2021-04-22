@@ -58,7 +58,7 @@
         },
 
         mounted() {
-            // this.$refs.left.$refs.des.GetQuestionDes(localStorage.getItem("problemId"), localStorage.getItem("Id"));//获取问题详细信息
+            // this.$refs.left.$refs.des.GetQuestionDes(sessionStorage.getItem("problemId"), sessionStorage.getItem("Id"));//获取问题详细信息
         }
 
     }

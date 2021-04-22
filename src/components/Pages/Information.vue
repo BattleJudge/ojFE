@@ -5,9 +5,6 @@
 
 
     <el-row type="flex" class="row-bg" justify="space-around">
-<!--      <vue-particles color="#7b7d7d" :particleOpacity="0.7" :particlesNumber="150" shapeType="circle" :particleSize="4"-->
-<!--                     linesColor="#203c77" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="100"-->
-<!--                     :moveSpeed="2" :hoverEffect="true" hoverMode="grab" class="lizi"/>-->
 
       <el-form label-width="80px" class="InforContainer">
         <el-form-item label="用户头像">
@@ -111,9 +108,9 @@
                     this.form.accepted_number=data.accepted_number;
                     this.form.submission_number=data.submission_number;
 
-                    localStorage.setItem("avatar",this.form.avatar);
-                    localStorage.setItem("nickname",this.form.nickname);
-                    localStorage.setItem("motto",this.form.motto);
+                    sessionStorage.setItem("avatar",this.form.avatar);
+                    sessionStorage.setItem("nickname",this.form.nickname);
+                    sessionStorage.setItem("motto",this.form.motto);
 
                 }
 

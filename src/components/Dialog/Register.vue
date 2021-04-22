@@ -113,7 +113,7 @@
                 return ;
               }
 
-                localStorage.removeItem('token')
+                sessionStorage.removeItem('token')
 
                 this.$axios({
                     method: 'post',

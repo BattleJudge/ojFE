@@ -27,22 +27,17 @@
         methods: {
             initWebSocket() {
 
-                let url = 'ws://121.4.57.217:9620/ws/battle/?authorization='+localStorage.getItem("token");
+                let url = 'ws://121.4.57.217:9620/ws/battle/?authorization='+sessionStorage.getItem("token");
 
                 this.websocket = new WebSocket(url)
-
                 // 连接错误
                 this.websocket.onerror = this.setErrorMessage
-
                 // 连接成功
                 this.websocket.onopen = this.setOnopenMessage
-
                 // 收到消息的回调
                 this.websocket.onmessage = this.setOnmessageMessage
-
                 // 连接关闭的回调
                 this.websocket.onclose = this.setOncloseMessage
-
                 // 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
                 window.onbeforeunload = this.onbeforeunload
 
@@ -73,12 +68,12 @@
               if(data.code=="0"){
                 if(data.msg!="connect success"){
                   if(data.msg=="draw"){
-                    PubSub.publish("Draw", data.msg);
+                    PubSub.publish("Draw", data.msg);//对方放弃比赛
                   }else if(data.msg=="lose"){
-                    PubSub.publish("Complete", data.data.winner_code);
+                    PubSub.publish("Complete", data.data.winner_code);//对方成功提交
                   }else if(data.msg=="submit success"){
                     if(data.data.result==0){
-                      PubSub.publish("Success", data.data.result);
+                      PubSub.publish("Success", data.data.result);//用户提交成功
                     }else{
                       this.$message.error(this.dealResult(data.data.result));
                     }
@@ -86,7 +81,7 @@
                 }else if(data.msg=="connect success"){
                   if(data.data.problem_data!=null){
                      // console.log(data.data.problem_data)
-                    localStorage.setItem("ProblemInformation",JSON.stringify(data.data.problem_data))
+                    sessionStorage.setItem("ProblemInformation",JSON.stringify(data.data.problem_data))
                     // PubSub.publish("getProblemInformation", data.data.problem_data);
                     PubSub.publish("getCompetitor1", data.data.opponent_info.nickname);
                   }
