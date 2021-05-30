@@ -23,7 +23,7 @@ Vue.use(codemirror)
 Vue.use(ElementUI);
 
 Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
-axios.defaults.baseURL = "http://121.4.57.217:9620";
+axios.defaults.baseURL = "后台链接";
 
 
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
@@ -83,7 +83,7 @@ axios.interceptors.request.use(
             } else {
                 if (!isRefreshing) {
                     isRefreshing = true;
-                    axios.post("http://121.4.57.217:9620/api/token/refresh/",
+                    axios.post("http://后台ip：端口/api/token/refresh/",
                         {"refresh": sessionStorage.getItem("refreshToken")})
                         .then(Response => {
                             isRefreshing = false;

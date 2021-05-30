@@ -5,7 +5,7 @@
     <el-form :model="loginForm" :rules="rules" class="login-container" label-position="left"
              label-width="0px" v-loading="loading">
 
-      <h3 class="login_title">系统登录</h3>
+      <h3 class="login_title">Battle Judge</h3>
       <el-form-item prop="email">
         <el-input type="text" v-model="loginForm.username"
                   auto-complete="off" placeholder="邮箱或用户名"></el-input>
@@ -19,6 +19,7 @@
         <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="login">登录</el-button>
         <el-button type="primary" style="width: 40%;background: #505458;border: none" @click="register">注册</el-button>
       </el-form-item>
+
       <el-form-item>
         <el-link type="success" @click="verify">找回密码</el-link>
       </el-form-item>
@@ -56,13 +57,10 @@
                     password: ""
                 },
 
-                loading: false,
 
             }
         },
         methods: {
-
-
 
             register() {
                 this.$refs.RegisterDialog.open();

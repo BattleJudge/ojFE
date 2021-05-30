@@ -2,25 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Vuex from "vuex"
 
-// import Login from "../components/Pages/Login"
-// import Information from "../components/Pages/Information"
-// import Rank from "../components/Pages/Rank"
-// import History from "../components/Pages/History"
-// import HistoryDetail from "../components/Pages/HistoryDetail"
-// import Contest from "../components/Pages/Contest"
-// import ProblemList from "../components/Pages/ProblemList"
-// import RegularProblemList from "../components/Pages/RegularProblemList"
-// import UserList from "../components/Pages/UserList"
-//
-// import ProblemAdd from "../components/Admin/ProblemAdd"
-// import ProblemDetail from "../components/Admin/ProblemDetail"
-// // import Submit from "../components/Admin/Submit"
-// // import Rejudge from "../components/Admin/ReJudge"
-//
-// import SingleOj from "../components/Pages/SingleOj"
-// import SingleOjHistory from "../components/Pages/SingleOjHistory.vue"
-// import SingleSolution from "../components/Pages/SingleSolution"
-// import MySolution from "../components/Pages/MySolution"
 
 
 

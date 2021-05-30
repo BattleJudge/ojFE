@@ -27,7 +27,7 @@
         methods: {
             initWebSocket() {
 
-                let url = 'ws://121.4.57.217:9620/ws/battle/?authorization='+sessionStorage.getItem("token");
+                let url = 'ws://后台ip地址:端口/ws/battle/?authorization='+sessionStorage.getItem("token");
 
                 this.websocket = new WebSocket(url)
                 // 连接错误
