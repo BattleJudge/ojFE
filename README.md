@@ -1,8 +1,11 @@
 BattleJudge Fronted
 ===
+<img src="https://img.shields.io/badge/vue-2.6.11-blue"></img>
+
+
+
 Compiles and hot-reloads for development
 ---
-
 ~~~
 npm run serve
 ~~~
