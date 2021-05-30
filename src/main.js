@@ -83,7 +83,7 @@ axios.interceptors.request.use(
             } else {
                 if (!isRefreshing) {
                     isRefreshing = true;
-                    axios.post("http://后台ip：端口/api/token/refresh/",
+                    axios.post("后台链接",
                         {"refresh": sessionStorage.getItem("refreshToken")})
                         .then(Response => {
                             isRefreshing = false;

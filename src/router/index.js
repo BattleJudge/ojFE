@@ -42,22 +42,6 @@ export default new Router({
             }
         },
 
-        // {
-        //     path: '/Submit',
-        //     component: Submit,
-        //     meta: {
-        //         keepAlive: true,
-        //         requireAuth: true
-        //     }
-        // },
-        // {
-        //     path: '/ReJudge',
-        //     component: Rejudge,
-        //     meta: {
-        //         keepAlive: true,
-        //         requireAuth: true
-        //     }
-        // },
 
 
 
