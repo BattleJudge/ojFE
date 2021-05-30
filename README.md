@@ -1,16 +1,20 @@
-#BattleJudge Fronted
+BattleJudge Fronted
+===
 
-##Project setup
+Project setup
+---
 ~~~
 npm install
 ~~~
 
-##Compiles and hot-reloads for development
+Compiles and hot-reloads for development
+--
 ~~~
 npm run serve
 ~~~
 
-##Compiles and minifies for production
+Compiles and minifies for production
+--
 ~~~
 npm run build
 ~~~
@@ -18,7 +22,8 @@ npm run build
 
 
 
-##The interface needs to be configured in the following files
+The interface needs to be configured in the following files
+--
 main.js\
 ![](./img/main1.png)
 ![](./img/main2.png)
